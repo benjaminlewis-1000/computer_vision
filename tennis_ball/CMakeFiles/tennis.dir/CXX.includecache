@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/lewis/Dropbox/631_robot_vision/tennis_ball/tennis_ball.cpp
+opencv2/highgui/highgui_c.h
+/home/lewis/Dropbox/631_robot_vision/tennis_ball/opencv2/highgui/highgui_c.h
+opencv2/highgui/highgui.hpp
+-
+opencv2/imgproc/imgproc.hpp
+-
+opencv2/features2d/features2d.hpp
+-
+opencv2/objdetect/objdetect.hpp
+-
+stdio.h
+-
+iostream
+-
+sys/time.h
+-
+

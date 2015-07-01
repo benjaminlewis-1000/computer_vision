@@ -1,0 +1,5 @@
+/home/lewis/Dropbox/631_robot_vision/lab3/CMakeFiles/Calibrate.dir
+/home/lewis/Dropbox/631_robot_vision/lab3/CMakeFiles/alex.dir
+/home/lewis/Dropbox/631_robot_vision/lab3/CMakeFiles/measurement.dir
+/home/lewis/Dropbox/631_robot_vision/lab3/CMakeFiles/pointGet.dir
+/home/lewis/Dropbox/631_robot_vision/lab3/CMakeFiles/rectification.dir

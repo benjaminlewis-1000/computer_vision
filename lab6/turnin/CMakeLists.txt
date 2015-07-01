@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 2.8)
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+project( MotionStructure )
+find_package( OpenCV REQUIRED )
+
+add_executable(unknownParams unknownParams.cpp)
+target_link_libraries( unknownParams ${OpenCV_LIBS} )
+add_executable(findExtrinsic unknownExtrinsic.cpp)
+target_link_libraries( findExtrinsic ${OpenCV_LIBS} )
+add_executable(known knownParams.cpp)
+target_link_libraries( known ${OpenCV_LIBS} )

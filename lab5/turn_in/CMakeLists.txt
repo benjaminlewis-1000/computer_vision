@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 2.8)
+project( OpticalFlow )
+find_package( OpenCV REQUIRED )
+
+add_executable(opticalFlow optical_flow1.cpp)
+target_link_libraries( opticalFlow ${OpenCV_LIBS} )
+add_executable(featureMatch feature_matching.cpp)
+target_link_libraries( featureMatch ${OpenCV_LIBS} )
+add_executable(multiFeatureMatch multi_feature_matching.cpp)
+target_link_libraries( multiFeatureMatch ${OpenCV_LIBS} )

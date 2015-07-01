@@ -1,0 +1,100 @@
+F -- parallel real: 
+\begin{equation*}
+\begin{bmatrix}
+-2.9877e-08 & 7.06355e-05 & -0.0341329 \\ -7.0628e-05 & 1.65651e-06 & -0.113213 \\ 0.0340978 & 0.110394 & 1
+\end{bmatrix}
+\end{equation*}
+
+E -- parallel real: 
+\begin{equation*}
+\begin{bmatrix}
+
+R -- parallel real: 
+\begin{equation*}
+\begin{bmatrix}
+-0.666396 & 0.198052 & 0.718813 \\ 0.202832 & 0.975871 & -0.0808369 \\ 0.717479 & -0.0919289 & 0.690488
+\end{bmatrix}
+\end{equation*}
+
+T -- parallel real: 
+\begin{equation*}
+\begin{bmatrix}
+-0.912081 & 0.110428 & 0.39486
+\end{bmatrix}
+\end{equation*}
+
+F -- parallel cube: 
+\begin{equation*}
+\begin{bmatrix}
+1.85963e-07 & 6.2646e-06 & -0.0158124 \\ -2.00782e-06 & -3.12877e-06 & -0.301498 \\ 0.0137118 & 0.302505 & 1
+\end{bmatrix}
+\end{equation*}
+
+E -- parallel cube: 
+\begin{equation*}
+\begin{bmatrix}
+
+R -- parallel cube: 
+\begin{equation*}
+\begin{bmatrix}
+-0.995655 & 0.0904003 & 0.0223398 \\ 0.0903436 & 0.995904 & -0.00353775 \\ 0.0225681 & 0.00150413 & 0.999744
+\end{bmatrix}
+\end{equation*}
+
+T -- parallel cube: 
+\begin{equation*}
+\begin{bmatrix}
+0.998753 & -0.0467997 & -0.0173906
+\end{bmatrix}
+\end{equation*}
+
+F -- turned real: 
+\begin{equation*}
+\begin{bmatrix}
+5.70559e-07 & 0.000121221 & -0.039057 \\ -0.000119936 & -5.06479e-06 & 0.0761189 \\ 0.0381034 & -0.0772662 & 1
+\end{bmatrix}
+\end{equation*}
+
+E -- turned real: 
+\begin{equation*}
+\begin{bmatrix}
+
+R -- turned real: 
+\begin{equation*}
+\begin{bmatrix}
+0.761888 & -0.0376246 & -0.646616 \\ -0.0676267 & 0.988234 & -0.137185 \\ -0.644169 & -0.148248 & -0.750379
+\end{bmatrix}
+\end{equation*}
+
+T -- turned real: 
+\begin{equation*}
+\begin{bmatrix}
+0.359698 & 0.076563 & 0.929922
+\end{bmatrix}
+\end{equation*}
+
+F -- turned cube: 
+\begin{equation*}
+\begin{bmatrix}
+-1.54185e-07 & 7.08284e-05 & -0.0195079 \\ -6.54911e-05 & -5.20632e-06 & 0.0584833 \\ 0.0181404 & -0.0605777 & 1
+\end{bmatrix}
+\end{equation*}
+
+E -- turned cube: 
+\begin{equation*}
+\begin{bmatrix}
+
+R -- turned cube: 
+\begin{equation*}
+\begin{bmatrix}
+0.999603 & 0.0279772 & 0.00330303 \\ -0.0280247 & 0.999489 & 0.0153665 \\ -0.00287144 & -0.015453 & 0.999876
+\end{bmatrix}
+\end{equation*}
+
+T -- turned cube: 
+\begin{equation*}
+\begin{bmatrix}
+-0.55019 & -0.0222806 & -0.834742
+\end{bmatrix}
+\end{equation*}
+

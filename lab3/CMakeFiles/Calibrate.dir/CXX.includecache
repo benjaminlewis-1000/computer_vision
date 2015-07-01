@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/lewis/Dropbox/631_robot_vision/lab3/lab3_1.cpp
+iostream
+-
+string
+-
+sstream
+-
+stdlib.h
+-
+fstream
+-
+vector
+-
+cmath
+-
+boost/algorithm/string.hpp
+-
+opencv2/core/core.hpp
+-
+opencv2/highgui/highgui.hpp
+-
+opencv2/imgproc/imgproc.hpp
+/home/lewis/Dropbox/631_robot_vision/lab3/opencv2/imgproc/imgproc.hpp
+opencv2/opencv.hpp
+/home/lewis/Dropbox/631_robot_vision/lab3/opencv2/opencv.hpp
+pthread.h
+-
+ctime
+-
+
