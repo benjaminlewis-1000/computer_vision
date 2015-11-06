@@ -1,4 +1,4 @@
-# Install script for directory: /home/lewis/Dropbox/631_robot_vision/lab5
+# Install script for directory: /home/benjamin/gitRepos/computer_vision/lab5_motion_field
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,7 +38,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/home/lewis/Dropbox/631_robot_vision/lab5/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/benjamin/gitRepos/computer_vision/lab5_motion_field/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/home/lewis/Dropbox/631_robot_vision/lab5/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/benjamin/gitRepos/computer_vision/lab5_motion_field/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

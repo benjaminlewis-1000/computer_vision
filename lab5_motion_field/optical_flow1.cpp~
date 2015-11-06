@@ -85,7 +85,7 @@ int main(int argc, char** argv){
 			for (int vid = 0; vid < 9; vid++){
 				Vout << nextImage;  // SUPER HACK!!! YAY! Video writer is super fast at 30fps, so write more frames. 
 			}
-			waitKey(1);
+			waitKey(0);
 			
 		}
 	

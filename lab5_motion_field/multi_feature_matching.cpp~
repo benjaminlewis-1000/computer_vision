@@ -1,0 +1,280 @@
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/opencv.hpp>
+
+#include <string>
+#include <sstream>
+#include <vector>
+#include <iostream> 
+#include <fstream>
+
+#define WIDTH 640
+#define HEIGHT 480
+
+#define MAX_COUNT 300
+#define QUALITY 0.01
+#define MIN_DIST 3
+// 49, 79 is optimal for following chessboards. The larger search area and template
+// are advantageous for matching the template better, but come at the cost of computation time. 
+#define templateXSize 15//115//55//49
+#define templateYSize 15//115//55//49
+
+#define searchXSize 39//185//89
+#define searchYSize 39//125//89
+
+/*
+*  Multi-feature tracking
+*	This program, written for lab in Robotic Vision class, Spring 2015, tracks features in a sequence of images. 
+* 	In the first image, good features to track are found using the eponymous algorithm. 
+* 	For each iteration of the for loop, a region of interest, defined
+*	in size by templateX/YSize, is defined as the template, using the good feature points as center points. The ROI
+* 	is defined from the first image of the iteration. The second image of the sequence has a larger area, the search
+*	area, taken from it by a similar method. The matchTemplate algorithm finds the best matchup to the template in the
+*	search image. Since this can result in movements that are not consistent with the image at large, the 
+*	findFundamentalMatrix function is used with RANSAC to find points that don't fit the general fundamental matrix.
+*	We then iterate through all these points, putting points that match the fundamental matrix in the 'frames' vector
+*	(which holds points from each frame that are consistently tracked.) If it does not match, then the corresponding point
+*	is removed from earlier vectors in the 'frames' vector. (The points pushed into 'frames' are those of the original point,
+*	i.e the center of the template.) We then draw circles around the latest point and lines to show the trajectory. 
+*/
+
+using namespace std;
+using namespace cv;
+
+void mouseHandlerL(int event, int x, int y, int flags, void* param)
+{
+    /* user press left button */
+    if (event == CV_EVENT_LBUTTONDOWN )
+    {
+        Point2f point = Point2f(x, y);
+		cout << x << "  " << y << endl;
+    }
+}
+
+void multiFrameTrack(int start, int end, VideoWriter Vout, string fileBase, string outImgName, string endImgName, string startPointsFile, string endPointsFile, int ransac_level);
+
+void multiFrameTrack(int start, int end, VideoWriter Vout, string fileBase, string outImgName, string endImgName, string startPointsFile, string endPointsFile, int ransac_level){
+
+	Size winSize(10,10);
+	TermCriteria termcrit(CV_TERMCRIT_ITER|CV_TERMCRIT_EPS,30,0.1);
+	vector<Point2f> points[2];  // Index 0 = last image, index 1 = this image. 
+	vector<Point2f> frames[end - start];  // Index 0 = last image, index 1 = this image. 
+	
+	Mat source, compareImg;
+	Mat dispImg; // Displayed image
+	
+	
+	// Load the first and last image in the sequence, for use in tasks required in this assignment for turn in. 
+	ostringstream firstFrameName;
+	firstFrameName << fileBase << start << ".jpg";
+	Mat firstFrame = imread(firstFrameName.str(), CV_LOAD_IMAGE_COLOR);
+	ostringstream lastFrameName;
+	lastFrameName << fileBase << end << ".jpg";
+	Mat lastFrame = imread(lastFrameName.str(), CV_LOAD_IMAGE_COLOR);
+	
+	for (int i = start; i < end ; i++){
+		
+		points[1].clear();
+	// Open a previous and a next image to compute the optical flow between them. 
+		ostringstream prev;
+		prev << fileBase << i << ".jpg";
+		ostringstream next;
+		next << fileBase << i + 1 << ".jpg";
+	
+	// Load in the previous image and the current image. We take the template from source and try to match it to compareImg. 
+		string lastFilename = prev.str();
+		source = imread(lastFilename, CV_LOAD_IMAGE_GRAYSCALE);
+		string nextFilename = next.str();
+		compareImg = imread(nextFilename, CV_LOAD_IMAGE_GRAYSCALE);
+		
+		// Get good features to track, which will be fed into the optical flow algorithm. Only done the first time through. 
+		if (i == start){
+			goodFeaturesToTrack(source, points[0], MAX_COUNT, 0.01, MIN_DIST, Mat(), 5, 0, 0.04); // Get a field of 500 features to track
+			cornerSubPix(source, points[0], winSize, Size(-1, -1), termcrit);
+			for (int p = 0; p < points[0].size(); p++){
+				circle(firstFrame,points[0][p],3,cv::Scalar(0,255,0),1);
+			}
+		}
+
+		cvtColor(compareImg, dispImg, CV_GRAY2BGR);
+				
+		for (int k = 0; k < points[0].size(); k++){
+			// Get the corners for the template and the search area, and fix for edge cases. 
+			int xTempCorner = std::max( (int)points[0][k].x - templateXSize/2, 0);
+			int yTempCorner = std::max( (int)points[0][k].y - templateYSize/2, 0);
+			int xSearchCorner = std::max( (int)points[0][k].x - searchXSize/2, 0);
+			int ySearchCorner = std::max( (int)points[0][k].y - searchYSize/2, 0);
+
+			// Same for width of the ROIs. 
+			int templateWidth = std::min(templateXSize, WIDTH - xTempCorner);
+			int templateHeight = std::min(templateYSize, HEIGHT - yTempCorner);
+			int searchWidth = std::min(searchXSize, WIDTH - xSearchCorner);
+			int searchHeight = std::min(searchYSize, HEIGHT - ySearchCorner);
+			
+			if (!templateWidth || !templateHeight || !searchWidth || !searchHeight){
+				continue;
+			}
+
+			Mat templateImg(source, Rect(xTempCorner, yTempCorner, templateWidth, templateHeight) );  // Smaller
+			Mat comparison(compareImg, Rect(xSearchCorner, ySearchCorner , searchWidth, searchHeight) ); 
+
+			// Formulate the result matrix, which is the size of the difference of the 2 mats + 1. This holds
+			// the result of the convolutions.
+			int rCols = comparison.cols - templateImg.cols + 1; // This is key... 9x9 total size of result.
+			int rRows = comparison.rows - templateImg.rows + 1;
+			Mat result = Mat(rRows, rCols, CV_8UC3);
+
+			// Match the template
+			matchTemplate(comparison, templateImg, result, CV_TM_SQDIFF_NORMED);//CV_TM_CCORR);
+			normalize( result, result, 0, 1, NORM_MINMAX, -1, Mat() );
+
+			// Then get the point in the results that best fits.
+			Point minLoc, maxLoc;
+			double minVal, maxVal;
+			// Finds the index of the max and min values. For CV_TM_SQDIFF, best match is at minLoc. 
+			minMaxLoc(result, &minVal, &maxVal, &minLoc, &maxLoc);
+			Point matchLoc = minLoc;  // This will be a location within the bigger Mat,
+										// i.e. in the comparison rectangle. Has to be. 
+
+			// After doing some working it out on paper, I came up with this as the correct algorithm for figuring out
+			// where the corresponding point is in the larger image. The result vector's top left point is (searchCols - tempCols)/2 from the 
+			// left of the search field, similar for y, and then add in the search field's x and y. 
+			matchLoc.x = xSearchCorner + matchLoc.x + (searchWidth - rCols) / 2;  // Add value to x and y to get a translation vector. 
+			matchLoc.y = ySearchCorner + matchLoc.y + (searchHeight - rRows) / 2; 
+			// Push it back into points[1], which will eventually be used to populate the points to track for the next iteration .
+			points[1].push_back(matchLoc);
+			
+		}
+		
+		vector<uchar> status; 
+		// Do RANSAC on the points to see if they fit the fund. matrix. The '1' parameter is a stricter 
+		// parameter to ensure that the points match the model well.
+		findFundamentalMat(points[0], points[1], CV_FM_RANSAC, ransac_level, 0.99, status);
+	
+		//cout << points[0].size() << " " << points[1].size() << endl;
+		
+		for (int clean = status.size() - 1; clean >= 0 ; clean--){ // Starting at the end, so as not to mess up indexing as we delete things.
+		// If the status is such that the point is OK, push the original point into 'frames' as a frame that belongs to the first (template) image.
+			if (status[clean] == 1 && points[1][clean].x < WIDTH && points[1][clean].y < HEIGHT
+				&& points[1][clean].x > 0 && points[1][clean].y > 0 ){
+				frames[i - start].push_back(points[0][clean]);
+			}else{
+			// Else, delete that point from all previous iterations' record of the good points. 
+				points[1].erase(points[1].begin() + clean);
+				for (int kk = 0; kk < i - start; kk++){
+					frames[kk].erase(frames[kk].begin() + clean); 
+					// frames[0] will hold the first position.
+				}
+			}
+		}
+		// Just because I'm pushing new frames in backwards, I need to reverse the entire matrix I just made so I can 
+		// have consistency. 
+		reverse(frames[i - start].begin(), frames[i - start].end() );
+
+		// Draw a circle of the point where we came from.
+		for (int k = 0; k < points[0].size(); k++){
+			circle(dispImg,points[0][k],3,cv::Scalar(0,255,0),1);
+		}
+		
+		// If the line between last point and this is reasonable, draw it and all lines leading up to it.
+		// If the line isn't reasonable, it's going to fail on the next fundamental matrix anyway. 
+		for (int jj = 0; jj < i - start; jj++){
+			for (int k = 0; k < points[0].size() ; k++){
+				if(norm(Mat(frames[jj][k]), Mat(frames[jj + 1][k])) > 50){  // Not reasonable line, continue
+					continue;
+				}
+				line(dispImg, frames[jj][k], frames[jj + 1][k], Scalar(0,0,255), 1);
+				if (i == end - 1){ // If we're on the last frame, then draw this path on the output image required by the assignment.
+					line(firstFrame, frames[jj][k], frames[jj + 1][k], Scalar(0,0,255), 1);
+				}
+			}
+		}
+		
+		if (i == end - 1){ // If we're on the last frame, then draw start and end circles on the output image required by the assignment.
+			for (int k = 0; k < points[0].size() ; k++){
+				circle(firstFrame,frames[i - start][k],3,cv::Scalar(0,255,0),1);
+				circle(lastFrame,frames[i - start][k],3,cv::Scalar(0,255,0),1);
+			}
+		}
+		
+		for (int vid = 0; vid < 9; vid++){ // Write to video
+			Vout << dispImg;  // SUPER HACK!!! YAY! Video writer is super fast at 30fps, so write more frames. 
+		}
+		
+		imshow("Screen", dispImg);  // Display
+		swap(points[1], points[0]);
+		waitKey(0);
+	}
+	for (int vid = 0; vid < 15; vid++){
+		Vout << dispImg;  // Pause in the video between different scenarios.
+	}
+	
+//	cout << "Start:: \n\n" << frames[0] << endl << endl << endl; // First frame points that still exist
+//	cout << "End:: \n\n" << frames[end - start - 1] << endl << endl << endl;
+
+
+/*	vector<uchar> status; 
+	// Do RANSAC on the points to see if they fit the fund. matrix. The '1' parameter is a stricter 
+	// parameter to ensure that the points match the model well.
+	if (points[0].size() < points[1].size()){
+		int diff = points[1].size() - points[0].size();
+		for (int i = 0; i < diff; i++){
+			points[1].pop_back();
+		}	
+	}
+	cout << "Number of points is " <<  points[0].size() << "   " << points[1].size() << endl;
+	findFundamentalMat(points[0], points[1], CV_FM_RANSAC, 3, 0.99, status);
+
+	cout << frames[0].size() << "    " << frames[end - start - 1].size() << endl; // Start and end matching keypoints
+	
+	for (int ii = frames[0].size() - 1; ii >= 0; ii--){
+		if(status[ii] == 0){
+			frames[0].erase(frames[0].begin() + ii);
+			frames[1].erase(frames[1].begin() + ii);
+		}
+	}
+	cout << frames[0].size() << "    " << frames[end - start - 1].size() << endl; // Start and end matching keypoints*/
+	
+	ofstream myfile;
+	myfile.open(startPointsFile.c_str());
+	for (int i = 0; i < frames[0].size(); i++){
+		myfile << frames[0][i].x << "," << frames[0][i].y << endl;
+	}
+	myfile.close();
+	
+	myfile.open(endPointsFile.c_str());
+	for (int i = 0; i < frames[end - start - 1].size(); i++){
+		myfile << frames[end - start - 1][i].x << "," << frames[end - start - 1][i].y << endl;
+	}
+	myfile.close();
+	
+	imwrite(outImgName, firstFrame);
+	imwrite(endImgName, lastFrame);
+}
+
+
+int main(){
+	namedWindow("Screen",WINDOW_NORMAL);
+	resizeWindow("Screen", 1800, 1000);
+	//Mat image, prevImage;
+	cvSetMouseCallback("Screen", mouseHandlerL, NULL);
+	
+	const int start = 1;
+	const int end = 14;
+
+	if (end <= start){
+		return -1;}
+
+	VideoWriter Vout;
+	// multiFrame.avi
+	Vout.open("junk.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, Size(640,480), 1);
+
+// This is made into a function so I can call many different images sets easily. 
+
+//	multiFrameTrack(start, end, Vout, "parallel_real/ParallelReal", "outParaRealStart.jpg", "outParaRealEnd.jpg", "paraRealStart.txt", "paraRealEnd.txt", 1); // At 15/39 search window
+	multiFrameTrack(start, end, Vout, "turned_real/TurnReal", "outTurnRealStart.jpg", "outTurnRealEnd.jpg", "turnRealStart.txt", "turnRealEnd.txt", 2);
+//	multiFrameTrack(start, end, Vout, "parallel_cube/ParallelCube", "outParaCubeStart.jpg", "outParaCubeEnd.jpg", "paraCubeStart.txt", "paraCubeEnd.txt", 1); // Just gets better points...
+//	multiFrameTrack(start, end, Vout, "turned_cube/TurnCube", "outTurnCubeStart.jpg", "outTurnCubeEnd.jpg", "turnCubeStart.txt", "turnCubeEnd.txt", 1); // At 55/89 search window
+	
+}

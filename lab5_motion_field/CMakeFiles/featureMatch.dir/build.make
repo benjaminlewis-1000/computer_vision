@@ -26,19 +26,22 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E remove -f
+RM = /usr/local/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /usr/local/bin/ccmake
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lewis/Dropbox/631_robot_vision/lab5
+CMAKE_SOURCE_DIR = /home/benjamin/gitRepos/computer_vision/lab5_motion_field
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lewis/Dropbox/631_robot_vision/lab5
+CMAKE_BINARY_DIR = /home/benjamin/gitRepos/computer_vision/lab5_motion_field
 
 # Include any dependencies generated for this target.
 include CMakeFiles/featureMatch.dir/depend.make
@@ -51,17 +54,17 @@ include CMakeFiles/featureMatch.dir/flags.make
 
 CMakeFiles/featureMatch.dir/feature_matching.cpp.o: CMakeFiles/featureMatch.dir/flags.make
 CMakeFiles/featureMatch.dir/feature_matching.cpp.o: feature_matching.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/lewis/Dropbox/631_robot_vision/lab5/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/benjamin/gitRepos/computer_vision/lab5_motion_field/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/featureMatch.dir/feature_matching.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/featureMatch.dir/feature_matching.cpp.o -c /home/lewis/Dropbox/631_robot_vision/lab5/feature_matching.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/featureMatch.dir/feature_matching.cpp.o -c /home/benjamin/gitRepos/computer_vision/lab5_motion_field/feature_matching.cpp
 
 CMakeFiles/featureMatch.dir/feature_matching.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/featureMatch.dir/feature_matching.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/lewis/Dropbox/631_robot_vision/lab5/feature_matching.cpp > CMakeFiles/featureMatch.dir/feature_matching.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/benjamin/gitRepos/computer_vision/lab5_motion_field/feature_matching.cpp > CMakeFiles/featureMatch.dir/feature_matching.cpp.i
 
 CMakeFiles/featureMatch.dir/feature_matching.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/featureMatch.dir/feature_matching.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/lewis/Dropbox/631_robot_vision/lab5/feature_matching.cpp -o CMakeFiles/featureMatch.dir/feature_matching.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/benjamin/gitRepos/computer_vision/lab5_motion_field/feature_matching.cpp -o CMakeFiles/featureMatch.dir/feature_matching.cpp.s
 
 CMakeFiles/featureMatch.dir/feature_matching.cpp.o.requires:
 .PHONY : CMakeFiles/featureMatch.dir/feature_matching.cpp.o.requires
@@ -130,6 +133,6 @@ CMakeFiles/featureMatch.dir/clean:
 .PHONY : CMakeFiles/featureMatch.dir/clean
 
 CMakeFiles/featureMatch.dir/depend:
-	cd /home/lewis/Dropbox/631_robot_vision/lab5 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lewis/Dropbox/631_robot_vision/lab5 /home/lewis/Dropbox/631_robot_vision/lab5 /home/lewis/Dropbox/631_robot_vision/lab5 /home/lewis/Dropbox/631_robot_vision/lab5 /home/lewis/Dropbox/631_robot_vision/lab5/CMakeFiles/featureMatch.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/benjamin/gitRepos/computer_vision/lab5_motion_field && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/benjamin/gitRepos/computer_vision/lab5_motion_field /home/benjamin/gitRepos/computer_vision/lab5_motion_field /home/benjamin/gitRepos/computer_vision/lab5_motion_field /home/benjamin/gitRepos/computer_vision/lab5_motion_field /home/benjamin/gitRepos/computer_vision/lab5_motion_field/CMakeFiles/featureMatch.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/featureMatch.dir/depend
 

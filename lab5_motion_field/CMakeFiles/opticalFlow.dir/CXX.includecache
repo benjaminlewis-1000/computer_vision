@@ -6,13 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/lewis/Dropbox/631_robot_vision/lab5/decompose.h
-Eigen/Dense
--
-Eigen/SVD
--
-
-/home/lewis/Dropbox/631_robot_vision/lab5/optical_flow1.cpp
+/home/benjamin/gitRepos/computer_vision/lab5_motion_field/optical_flow1.cpp
 opencv2/core/core.hpp
 -
 opencv2/highgui/highgui.hpp
@@ -27,6 +21,4 @@ sstream
 -
 vector
 -
-decompose.h
-/home/lewis/Dropbox/631_robot_vision/lab5/decompose.h
 

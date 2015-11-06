@@ -38,19 +38,22 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E remove -f
+RM = /usr/local/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /usr/local/bin/ccmake
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lewis/Dropbox/631_robot_vision/lab5
+CMAKE_SOURCE_DIR = /home/benjamin/gitRepos/computer_vision/lab5_motion_field
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lewis/Dropbox/631_robot_vision/lab5
+CMAKE_BINARY_DIR = /home/benjamin/gitRepos/computer_vision/lab5_motion_field
 
 #=============================================================================
 # Target rules for target CMakeFiles/featureMatch.dir
@@ -59,7 +62,7 @@ CMAKE_BINARY_DIR = /home/lewis/Dropbox/631_robot_vision/lab5
 CMakeFiles/featureMatch.dir/all:
 	$(MAKE) -f CMakeFiles/featureMatch.dir/build.make CMakeFiles/featureMatch.dir/depend
 	$(MAKE) -f CMakeFiles/featureMatch.dir/build.make CMakeFiles/featureMatch.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/lewis/Dropbox/631_robot_vision/lab5/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/benjamin/gitRepos/computer_vision/lab5_motion_field/CMakeFiles  1
 	@echo "Built target featureMatch"
 .PHONY : CMakeFiles/featureMatch.dir/all
 
@@ -69,9 +72,9 @@ all: CMakeFiles/featureMatch.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/featureMatch.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lewis/Dropbox/631_robot_vision/lab5/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/benjamin/gitRepos/computer_vision/lab5_motion_field/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/featureMatch.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lewis/Dropbox/631_robot_vision/lab5/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/benjamin/gitRepos/computer_vision/lab5_motion_field/CMakeFiles 0
 .PHONY : CMakeFiles/featureMatch.dir/rule
 
 # Convenience name for target.
@@ -94,7 +97,7 @@ clean: CMakeFiles/featureMatch.dir/clean
 CMakeFiles/multiFeatureMatch.dir/all:
 	$(MAKE) -f CMakeFiles/multiFeatureMatch.dir/build.make CMakeFiles/multiFeatureMatch.dir/depend
 	$(MAKE) -f CMakeFiles/multiFeatureMatch.dir/build.make CMakeFiles/multiFeatureMatch.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/lewis/Dropbox/631_robot_vision/lab5/CMakeFiles  2
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/benjamin/gitRepos/computer_vision/lab5_motion_field/CMakeFiles  2
 	@echo "Built target multiFeatureMatch"
 .PHONY : CMakeFiles/multiFeatureMatch.dir/all
 
@@ -104,9 +107,9 @@ all: CMakeFiles/multiFeatureMatch.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/multiFeatureMatch.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lewis/Dropbox/631_robot_vision/lab5/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/benjamin/gitRepos/computer_vision/lab5_motion_field/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/multiFeatureMatch.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lewis/Dropbox/631_robot_vision/lab5/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/benjamin/gitRepos/computer_vision/lab5_motion_field/CMakeFiles 0
 .PHONY : CMakeFiles/multiFeatureMatch.dir/rule
 
 # Convenience name for target.
@@ -129,7 +132,7 @@ clean: CMakeFiles/multiFeatureMatch.dir/clean
 CMakeFiles/opticalFlow.dir/all:
 	$(MAKE) -f CMakeFiles/opticalFlow.dir/build.make CMakeFiles/opticalFlow.dir/depend
 	$(MAKE) -f CMakeFiles/opticalFlow.dir/build.make CMakeFiles/opticalFlow.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/lewis/Dropbox/631_robot_vision/lab5/CMakeFiles  3
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/benjamin/gitRepos/computer_vision/lab5_motion_field/CMakeFiles  3
 	@echo "Built target opticalFlow"
 .PHONY : CMakeFiles/opticalFlow.dir/all
 
@@ -139,9 +142,9 @@ all: CMakeFiles/opticalFlow.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/opticalFlow.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lewis/Dropbox/631_robot_vision/lab5/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/benjamin/gitRepos/computer_vision/lab5_motion_field/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/opticalFlow.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lewis/Dropbox/631_robot_vision/lab5/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/benjamin/gitRepos/computer_vision/lab5_motion_field/CMakeFiles 0
 .PHONY : CMakeFiles/opticalFlow.dir/rule
 
 # Convenience name for target.
