@@ -34,11 +34,14 @@ RM = /usr/bin/cmake -E remove -f
 # Escaping for special characters.
 EQUALS = =
 
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /usr/bin/ccmake
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lewis/Dropbox/631_robot_vision/lab1
+CMAKE_SOURCE_DIR = /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lewis/Dropbox/631_robot_vision/lab1
+CMAKE_BINARY_DIR = /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Tennis.dir/depend.make
@@ -51,17 +54,17 @@ include CMakeFiles/Tennis.dir/flags.make
 
 CMakeFiles/Tennis.dir/tennis.cpp.o: CMakeFiles/Tennis.dir/flags.make
 CMakeFiles/Tennis.dir/tennis.cpp.o: tennis.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/lewis/Dropbox/631_robot_vision/lab1/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Tennis.dir/tennis.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Tennis.dir/tennis.cpp.o -c /home/lewis/Dropbox/631_robot_vision/lab1/tennis.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Tennis.dir/tennis.cpp.o -c /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro/tennis.cpp
 
 CMakeFiles/Tennis.dir/tennis.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Tennis.dir/tennis.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/lewis/Dropbox/631_robot_vision/lab1/tennis.cpp > CMakeFiles/Tennis.dir/tennis.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro/tennis.cpp > CMakeFiles/Tennis.dir/tennis.cpp.i
 
 CMakeFiles/Tennis.dir/tennis.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Tennis.dir/tennis.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/lewis/Dropbox/631_robot_vision/lab1/tennis.cpp -o CMakeFiles/Tennis.dir/tennis.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro/tennis.cpp -o CMakeFiles/Tennis.dir/tennis.cpp.s
 
 CMakeFiles/Tennis.dir/tennis.cpp.o.requires:
 .PHONY : CMakeFiles/Tennis.dir/tennis.cpp.o.requires
@@ -81,35 +84,46 @@ Tennis_EXTERNAL_OBJECTS =
 
 Tennis: CMakeFiles/Tennis.dir/tennis.cpp.o
 Tennis: CMakeFiles/Tennis.dir/build.make
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_videostab.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_video.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_ts.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_superres.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_ocl.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_ml.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_legacy.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_gpu.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_flann.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_features2d.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_core.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_contrib.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_legacy.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_video.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_ml.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_features2d.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_flann.so.2.4.8
-Tennis: /usr/lib/x86_64-linux-gnu/libopencv_core.so.2.4.8
+Tennis: /usr/local/lib/libopencv_viz.so.2.4.11
+Tennis: /usr/local/lib/libopencv_videostab.so.2.4.11
+Tennis: /usr/local/lib/libopencv_video.so.2.4.11
+Tennis: /usr/local/lib/libopencv_ts.a
+Tennis: /usr/local/lib/libopencv_superres.so.2.4.11
+Tennis: /usr/local/lib/libopencv_stitching.so.2.4.11
+Tennis: /usr/local/lib/libopencv_photo.so.2.4.11
+Tennis: /usr/local/lib/libopencv_ocl.so.2.4.11
+Tennis: /usr/local/lib/libopencv_objdetect.so.2.4.11
+Tennis: /usr/local/lib/libopencv_nonfree.so.2.4.11
+Tennis: /usr/local/lib/libopencv_ml.so.2.4.11
+Tennis: /usr/local/lib/libopencv_legacy.so.2.4.11
+Tennis: /usr/local/lib/libopencv_imgproc.so.2.4.11
+Tennis: /usr/local/lib/libopencv_highgui.so.2.4.11
+Tennis: /usr/local/lib/libopencv_gpu.so.2.4.11
+Tennis: /usr/local/lib/libopencv_flann.so.2.4.11
+Tennis: /usr/local/lib/libopencv_features2d.so.2.4.11
+Tennis: /usr/local/lib/libopencv_core.so.2.4.11
+Tennis: /usr/local/lib/libopencv_contrib.so.2.4.11
+Tennis: /usr/local/lib/libopencv_calib3d.so.2.4.11
+Tennis: /usr/lib/x86_64-linux-gnu/libGLU.so
+Tennis: /usr/lib/x86_64-linux-gnu/libGL.so
+Tennis: /usr/lib/x86_64-linux-gnu/libSM.so
+Tennis: /usr/lib/x86_64-linux-gnu/libICE.so
+Tennis: /usr/lib/x86_64-linux-gnu/libX11.so
+Tennis: /usr/lib/x86_64-linux-gnu/libXext.so
+Tennis: /usr/local/lib/libopencv_nonfree.so.2.4.11
+Tennis: /usr/local/lib/libopencv_ocl.so.2.4.11
+Tennis: /usr/local/lib/libopencv_gpu.so.2.4.11
+Tennis: /usr/local/lib/libopencv_photo.so.2.4.11
+Tennis: /usr/local/lib/libopencv_objdetect.so.2.4.11
+Tennis: /usr/local/lib/libopencv_legacy.so.2.4.11
+Tennis: /usr/local/lib/libopencv_video.so.2.4.11
+Tennis: /usr/local/lib/libopencv_ml.so.2.4.11
+Tennis: /usr/local/lib/libopencv_calib3d.so.2.4.11
+Tennis: /usr/local/lib/libopencv_features2d.so.2.4.11
+Tennis: /usr/local/lib/libopencv_highgui.so.2.4.11
+Tennis: /usr/local/lib/libopencv_imgproc.so.2.4.11
+Tennis: /usr/local/lib/libopencv_flann.so.2.4.11
+Tennis: /usr/local/lib/libopencv_core.so.2.4.11
 Tennis: CMakeFiles/Tennis.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable Tennis"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Tennis.dir/link.txt --verbose=$(VERBOSE)
@@ -126,6 +140,6 @@ CMakeFiles/Tennis.dir/clean:
 .PHONY : CMakeFiles/Tennis.dir/clean
 
 CMakeFiles/Tennis.dir/depend:
-	cd /home/lewis/Dropbox/631_robot_vision/lab1 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lewis/Dropbox/631_robot_vision/lab1 /home/lewis/Dropbox/631_robot_vision/lab1 /home/lewis/Dropbox/631_robot_vision/lab1 /home/lewis/Dropbox/631_robot_vision/lab1 /home/lewis/Dropbox/631_robot_vision/lab1/CMakeFiles/Tennis.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro/CMakeFiles/Tennis.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Tennis.dir/depend
 

@@ -46,11 +46,14 @@ RM = /usr/bin/cmake -E remove -f
 # Escaping for special characters.
 EQUALS = =
 
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /usr/bin/ccmake
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lewis/Dropbox/631_robot_vision/lab1
+CMAKE_SOURCE_DIR = /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lewis/Dropbox/631_robot_vision/lab1
+CMAKE_BINARY_DIR = /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro
 
 #=============================================================================
 # Target rules for target CMakeFiles/DisplayImage.dir
@@ -59,7 +62,7 @@ CMAKE_BINARY_DIR = /home/lewis/Dropbox/631_robot_vision/lab1
 CMakeFiles/DisplayImage.dir/all:
 	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/depend
 	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/lewis/Dropbox/631_robot_vision/lab1/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro/CMakeFiles  1
 	@echo "Built target DisplayImage"
 .PHONY : CMakeFiles/DisplayImage.dir/all
 
@@ -69,9 +72,9 @@ all: CMakeFiles/DisplayImage.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/DisplayImage.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lewis/Dropbox/631_robot_vision/lab1/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/DisplayImage.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lewis/Dropbox/631_robot_vision/lab1/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro/CMakeFiles 0
 .PHONY : CMakeFiles/DisplayImage.dir/rule
 
 # Convenience name for target.
@@ -94,7 +97,7 @@ clean: CMakeFiles/DisplayImage.dir/clean
 CMakeFiles/Tennis.dir/all:
 	$(MAKE) -f CMakeFiles/Tennis.dir/build.make CMakeFiles/Tennis.dir/depend
 	$(MAKE) -f CMakeFiles/Tennis.dir/build.make CMakeFiles/Tennis.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/lewis/Dropbox/631_robot_vision/lab1/CMakeFiles  2
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro/CMakeFiles  2
 	@echo "Built target Tennis"
 .PHONY : CMakeFiles/Tennis.dir/all
 
@@ -104,9 +107,9 @@ all: CMakeFiles/Tennis.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Tennis.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lewis/Dropbox/631_robot_vision/lab1/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Tennis.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lewis/Dropbox/631_robot_vision/lab1/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro/CMakeFiles 0
 .PHONY : CMakeFiles/Tennis.dir/rule
 
 # Convenience name for target.

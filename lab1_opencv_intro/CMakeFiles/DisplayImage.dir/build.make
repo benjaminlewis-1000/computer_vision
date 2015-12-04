@@ -34,11 +34,14 @@ RM = /usr/bin/cmake -E remove -f
 # Escaping for special characters.
 EQUALS = =
 
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /usr/bin/ccmake
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lewis/Dropbox/631_robot_vision/lab1
+CMAKE_SOURCE_DIR = /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lewis/Dropbox/631_robot_vision/lab1
+CMAKE_BINARY_DIR = /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro
 
 # Include any dependencies generated for this target.
 include CMakeFiles/DisplayImage.dir/depend.make
@@ -51,17 +54,17 @@ include CMakeFiles/DisplayImage.dir/flags.make
 
 CMakeFiles/DisplayImage.dir/detectors.cpp.o: CMakeFiles/DisplayImage.dir/flags.make
 CMakeFiles/DisplayImage.dir/detectors.cpp.o: detectors.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/lewis/Dropbox/631_robot_vision/lab1/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/DisplayImage.dir/detectors.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/DisplayImage.dir/detectors.cpp.o -c /home/lewis/Dropbox/631_robot_vision/lab1/detectors.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/DisplayImage.dir/detectors.cpp.o -c /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro/detectors.cpp
 
 CMakeFiles/DisplayImage.dir/detectors.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DisplayImage.dir/detectors.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/lewis/Dropbox/631_robot_vision/lab1/detectors.cpp > CMakeFiles/DisplayImage.dir/detectors.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro/detectors.cpp > CMakeFiles/DisplayImage.dir/detectors.cpp.i
 
 CMakeFiles/DisplayImage.dir/detectors.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DisplayImage.dir/detectors.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/lewis/Dropbox/631_robot_vision/lab1/detectors.cpp -o CMakeFiles/DisplayImage.dir/detectors.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro/detectors.cpp -o CMakeFiles/DisplayImage.dir/detectors.cpp.s
 
 CMakeFiles/DisplayImage.dir/detectors.cpp.o.requires:
 .PHONY : CMakeFiles/DisplayImage.dir/detectors.cpp.o.requires
@@ -81,35 +84,46 @@ DisplayImage_EXTERNAL_OBJECTS =
 
 DisplayImage: CMakeFiles/DisplayImage.dir/detectors.cpp.o
 DisplayImage: CMakeFiles/DisplayImage.dir/build.make
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_videostab.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_video.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_ts.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_superres.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_ocl.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_ml.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_legacy.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_gpu.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_flann.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_features2d.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_core.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_contrib.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_legacy.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_video.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_ml.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_features2d.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_flann.so.2.4.8
-DisplayImage: /usr/lib/x86_64-linux-gnu/libopencv_core.so.2.4.8
+DisplayImage: /usr/local/lib/libopencv_viz.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_videostab.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_video.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_ts.a
+DisplayImage: /usr/local/lib/libopencv_superres.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_stitching.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_photo.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_ocl.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_objdetect.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_nonfree.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_ml.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_legacy.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_imgproc.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_highgui.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_gpu.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_flann.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_features2d.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_core.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_contrib.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_calib3d.so.2.4.11
+DisplayImage: /usr/lib/x86_64-linux-gnu/libGLU.so
+DisplayImage: /usr/lib/x86_64-linux-gnu/libGL.so
+DisplayImage: /usr/lib/x86_64-linux-gnu/libSM.so
+DisplayImage: /usr/lib/x86_64-linux-gnu/libICE.so
+DisplayImage: /usr/lib/x86_64-linux-gnu/libX11.so
+DisplayImage: /usr/lib/x86_64-linux-gnu/libXext.so
+DisplayImage: /usr/local/lib/libopencv_nonfree.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_ocl.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_gpu.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_photo.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_objdetect.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_legacy.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_video.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_ml.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_calib3d.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_features2d.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_highgui.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_imgproc.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_flann.so.2.4.11
+DisplayImage: /usr/local/lib/libopencv_core.so.2.4.11
 DisplayImage: CMakeFiles/DisplayImage.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable DisplayImage"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/DisplayImage.dir/link.txt --verbose=$(VERBOSE)
@@ -126,6 +140,6 @@ CMakeFiles/DisplayImage.dir/clean:
 .PHONY : CMakeFiles/DisplayImage.dir/clean
 
 CMakeFiles/DisplayImage.dir/depend:
-	cd /home/lewis/Dropbox/631_robot_vision/lab1 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lewis/Dropbox/631_robot_vision/lab1 /home/lewis/Dropbox/631_robot_vision/lab1 /home/lewis/Dropbox/631_robot_vision/lab1 /home/lewis/Dropbox/631_robot_vision/lab1 /home/lewis/Dropbox/631_robot_vision/lab1/CMakeFiles/DisplayImage.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro /home/benjamin/gitRepos/computer_vision/lab1_opencv_intro/CMakeFiles/DisplayImage.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/DisplayImage.dir/depend
 

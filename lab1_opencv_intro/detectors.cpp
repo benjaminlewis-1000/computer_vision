@@ -6,7 +6,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/opencv.hpp"
-#include <time>
+#include <sys/time.h>
 
 using namespace cv;
 using namespace std;
